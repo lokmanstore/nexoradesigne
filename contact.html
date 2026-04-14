@@ -3,73 +3,101 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Contact</title>
+<title>Contact - NEXORA</title>
 
 <style>
 
 body{
-  margin:0;
-  font-family:Arial;
-  color:white;
+margin:0;
+background:#0b0f1a;
+color:white;
+font-family:Arial;
+overflow:hidden;
 }
 
-/* VIDEO */
-#bg-video{
-  position:fixed;
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  top:0;
-  left:0;
-  z-index:-2;
+/* HERO */
+.contact{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+position:relative;
+}
+
+.contact video{
+position:absolute;
+width:100%;
+height:100%;
+object-fit:cover;
+z-index:-2;
 }
 
 .overlay{
-  position:fixed;
-  width:100%;
-  height:100%;
-  background:rgba(0,0,0,0.7);
-  z-index:-1;
+position:absolute;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.7);
+z-index:-1;
 }
 
 /* FORM */
-.container{
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  height:100vh;
+.box{
+background:rgba(0,0,0,0.6);
+padding:40px;
+border-radius:15px;
+width:320px;
+text-align:center;
+backdrop-filter:blur(10px);
+box-shadow:0 0 25px rgba(0,255,213,0.2);
 }
 
-form{
-  background:rgba(0,0,0,0.6);
-  padding:40px;
-  border-radius:20px;
-  width:320px;
-  backdrop-filter:blur(10px);
-  text-align:center;
+input,textarea{
+width:100%;
+margin:10px 0;
+padding:12px;
+border:none;
+border-radius:10px;
+background:#111827;
+color:white;
+outline:none;
 }
 
-input, textarea{
-  width:100%;
-  padding:12px;
-  margin:10px 0;
-  border:none;
-  border-radius:10px;
+textarea{
+height:100px;
+resize:none;
 }
 
-button{
-  padding:12px;
-  width:100%;
-  background:#00ffd5;
-  border:none;
-  border-radius:30px;
-  font-weight:bold;
-  cursor:pointer;
-  box-shadow:0 0 20px #00ffd5;
+/* BUTTON */
+.btn{
+width:100%;
+padding:12px;
+border:none;
+border-radius:30px;
+background:linear-gradient(45deg,#00ffd5,#00bfff);
+font-weight:bold;
+cursor:pointer;
+box-shadow:0 0 15px #00ffd5;
+transition:0.3s;
 }
 
-button:hover{
-  box-shadow:0 0 40px #00ffd5;
+.btn:hover{
+transform:scale(1.05);
+box-shadow:0 0 30px #00ffd5;
+}
+
+/* LOADING */
+.loading{
+display:none;
+margin-top:10px;
+color:#00ffd5;
+}
+
+/* SUCCESS */
+.success{
+display:none;
+margin-top:10px;
+color:#00ff88;
+font-weight:bold;
 }
 
 </style>
@@ -77,25 +105,55 @@ button:hover{
 
 <body>
 
-<!-- 🎬 فيديو الكونتكت -->
-<video autoplay muted loop id="bg-video">
-  <source src="video.mp4/contact.mp4" type="video/mp4">
+<section class="contact">
+
+<!-- 🔥 بدل الفيديو هنا -->
+<video autoplay muted loop>
+<source src="contact.mp4" type="video/mp4">
 </video>
 
 <div class="overlay"></div>
 
-<div class="container">
-  <!-- ⚠️ بدل ID هنا -->
-  <form action="https://formspree.io/f/yourID" method="POST">
-    <h2>Contact Me</h2>
+<div class="box">
 
-    <input type="text" name="name" placeholder="Your Name" required>
-    <input type="email" name="email" placeholder="Your Email" required>
-    <textarea name="message" placeholder="Your Message" required></textarea>
+<h2>Contact Me</h2>
 
-    <button type="submit">Send Message</button>
-  </form>
+<form id="form" action="https://formspree.io/f/xgorvzrp" method="POST">
+
+<input type="text" name="name" placeholder="Your Name" required>
+<input type="email" name="email" placeholder="Your Email" required>
+<textarea name="message" placeholder="Your Message" required></textarea>
+
+<button type="submit" class="btn">Send Message</button>
+
+</form>
+
+<div class="loading" id="loading">⏳ Sending...</div>
+<div class="success" id="success">✅ Message Sent Successfully!</div>
+
 </div>
+
+</section>
+
+<script>
+
+const form = document.getElementById("form");
+const loading = document.getElementById("loading");
+const success = document.getElementById("success");
+
+form.addEventListener("submit", function(){
+
+loading.style.display="block";
+
+setTimeout(()=>{
+loading.style.display="none";
+success.style.display="block";
+form.reset(); // 🧹 يفرغ الفورم
+},1500);
+
+});
+
+</script>
 
 </body>
 </html>
