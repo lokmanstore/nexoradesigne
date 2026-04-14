@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NEXORA</title>
+
+<style>
+
+/* RESET */
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial;
+scroll-behavior:smooth; /* 🔥 سموث سكروول */
+}
+
+body{
+background:#0b0f1a;
+color:white;
+overflow-x:hidden;
+}
+
+/* LOADER */
+#loader{
+position:fixed;
+width:100%;
+height:100%;
+background:#0b0f1a;
+display:flex;
+justify-content:center;
+align-items:center;
+z-index:9999;
+}
+.spinner{
+width:60px;
+height:60px;
+border:5px solid #222;
+border-top:5px solid #00ffd5;
+border-radius:50%;
+animation:spin 1s linear infinite;
+}
+@keyframes spin{
+100%{transform:rotate(360deg);}
+}
+
+/* NAVBAR */
+header{
+position:fixed;
+width:100%;
+top:0;
+display:flex;
+justify-content:space-between;
+padding:20px 60px;
+z-index:1000;
+transition:0.3s;
+}
+header.scrolled{
+background:rgba(0,0,0,0.7);
+backdrop-filter:blur(10px);
+box-shadow:0 0 20px rgba(0,0,0,0.5);
+}
+.logo{
+color:#00ffd5;
+font-size:24px;
+font-weight:bold;
+}
+nav a{
+margin-left:25px;
+text-decoration:none;
+color:white;
+transition:0.3s;
+}
+nav a:hover{
+color:#00ffd5;
+}
+
+/* HERO */
+.hero{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+position:relative;
+}
+
+#bg-video{
+position:absolute;
+width:100%;
+height:100%;
+object-fit:cover;
+z-index:-2;
+}
+
+.overlay{
+position:absolute;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.6);
+z-index:-1;
+}
+
+.hero h1{
+font-size:55px;
+text-shadow:0 0 20px rgba(0,0,0,0.8);
+}
+
+.hero p{
+margin:10px 0;
+opacity:0.7;
+text-shadow:0 0 10px rgba(0,0,0,0.7);
+}
+
+/* BUTTON */
+.btn{
+padding:14px 30px;
+background:linear-gradient(45deg,#00ffd5,#00bfff);
+border:none;
+border-radius:30px;
+font-weight:bold;
+cursor:pointer;
+box-shadow:0 0 20px #00ffd5;
+transition:0.3s;
+}
+.btn:hover{
+transform:scale(1.1);
+box-shadow:0 0 40px #00ffd5;
+}
+
+/* SECTIONS */
+section{
+padding:90px 60px;
+text-align:center;
+}
+
+/* CARDS */
+.cards{
+display:flex;
+justify-content:center;
+gap:25px;
+flex-wrap:wrap;
+}
+.card{
+background:#111827;
+padding:30px;
+border-radius:15px;
+width:260px;
+transition:0.3s;
+}
+.card:hover{
+transform:translateY(-10px) scale(1.05);
+}
+
+/* PROJECT VIDEO */
+.project-video{
+width:300px;
+height:200px;
+object-fit:cover;
+border-radius:15px;
+transition:0.3s;
+}
+.project-card:hover .project-video{
+transform:scale(1.1);
+}
+
+/* SCROLL ANIMATION */
+.fade{
+opacity:0;
+transform:translateY(50px);
+transition:0.7s;
+}
+.fade.show{
+opacity:1;
+transform:translateY(0);
+}
+
+/* WHATSAPP BUTTON */
+.whatsapp-btn{
+position:fixed;
+bottom:20px;
+right:20px;
+background:#25D366;
+color:white;
+font-size:22px;
+padding:15px 18px;
+border-radius:50%;
+text-decoration:none;
+box-shadow:0 0 15px rgba(0,0,0,0.5);
+z-index:1000;
+transition:0.3s;
+animation:bounce 2s infinite;
+}
+
+@keyframes bounce{
+0%,100%{transform:translateY(0);}
+50%{transform:translateY(-10px);}
+}
+
+.whatsapp-btn:hover{
+box-shadow:0 0 25px #25D366;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- LOADER -->
+<div id="loader">
+<div class="spinner"></div>
+</div>
+
+<!-- NAVBAR -->
+<header>
+<div class="logo">NEXORA</div>
+<nav>
+<a href="#">Home</a>
+<a href="#services">Services</a>
+<a href="#work">Work</a>
+<a href="contact.html">Contact</a>
+</nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+
+<video autoplay muted loop id="bg-video">
+<source src="video.mp4/vid_665132123.bin" type="video/mp4">
+</video>
+
+<div class="overlay"></div>
+
+<div>
+<h1>Build Powerful Websites</h1>
+<p>Modern • Fast • Professional</p>
+<a href="contact.html"><button class="btn">Start Now</button></a>
+</div>
+
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="fade">
+<h2>Our Services</h2>
+
+<div class="cards">
+<div class="card">
+<h3>Landing Page</h3>
+<p>For ads</p>
+<strong>$5</strong>
+</div>
+
+<div class="card">
+<h3>Business Website</h3>
+<p>For companies</p>
+<strong>$10</strong>
+</div>
+
+<div class="card">
+<h3>Premium Website</h3>
+<p>High quality</p>
+<strong>$15</strong>
+</div>
+</div>
+</section>
+
+<!-- PROJECTS -->
+<section id="work" class="fade">
+<h2>🔥 Featured Work</h2>
+
+<div class="cards">
+
+    <div class="project-card">
+<video class="project-video" autoplay muted loop>
+<source src="video.mp4/9efac4c58c51675c7213254b7492a4e3_720w.mp4">
+</video>
+<p>Project 1</p>
+</div>
+
+<div class="project-card">
+<video class="project-video" autoplay muted loop>
+<source src="video.mp4/a7255863b92c2ef33981b484bbaad28f_720w.mp4">
+</video>
+<p>Project 2</p>
+</div>
+
+<div class="project-card">
+<video class="project-video" autoplay muted loop>
+<source src="video.mp4/fe9d3bff0d3baaea3d3f7df437f4bc8d_720w.mp4">
+</video>
+<p>Project 3</p>
+</div>
+
+</div>
+
+<br><br>
+<a href="contact.html"><button class="btn">Order Now</button></a>
+</section>
+
+<!-- WHATSAPP -->
+<a href="https://wa.me/213554751016?text=Hello%20I%20want%20a%20website" class="whatsapp-btn">💬</a>
+
+<script>
+
+/* LOADER */
+window.addEventListener("load", ()=>{
+document.getElementById("loader").style.display="none";
+});
+
+/* NAVBAR */
+window.addEventListener("scroll", ()=>{
+const header=document.querySelector("header");
+if(window.scrollY>50){
+header.classList.add("scrolled");
+}else{
+header.classList.remove("scrolled");
+}
+});
+
+/* SCROLL ANIMATION */
+const elements=document.querySelectorAll('.fade');
+window.addEventListener('scroll', ()=>{
+elements.forEach(el=>{
+const pos=el.getBoundingClientRect().top;
+const screen=window.innerHeight;
+if(pos<screen-100){
+el.classList.add('show');
+}
+});
+});
+
+/* MOUSE EFFECT */
+const cursor=document.createElement("div");
+cursor.style.width="15px";
+cursor.style.height="15px";
+cursor.style.border="2px solid #00ffd5";
+cursor.style.borderRadius="50%";
+cursor.style.position="fixed";
+cursor.style.pointerEvents="none";
+cursor.style.transform="translate(-50%,-50%)";
+cursor.style.zIndex="9999";
+document.body.appendChild(cursor);
+
+document.addEventListener("mousemove",e=>{
+cursor.style.left=e.clientX+"px";
+cursor.style.top=e.clientY+"px";
+});
+
+</script>
+
+</body>
+</html>
